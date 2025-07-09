@@ -1,0 +1,111 @@
+/* src/pages/UserManagementPage.css */
+@import '../components/common/forms.css';
+
+.user-management-container {
+    padding: 1rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.admin-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-section {
+    background-color: var(--surface-white);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.admin-section h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.section-header h3 {
+    margin: 0;
+}
+
+/* Department Form and List */
+.inline-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.inline-form input {
+    flex-grow: 1;
+    padding: 0.6rem 1rem; /* Slightly smaller for inline forms */
+}
+.inline-form button {
+    padding: 0.6rem 1.2rem;
+    white-space: nowrap;
+}
+.item-list {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* User Table */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.users-table th, .users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.users-table thead th {
+    font-weight: 600;
+    color: var(--text-light);
+}
+.users-table tbody tr:hover {
+    background-color: var(--background-main);
+}
+.actions-header {
+    text-align: right !important;
+}
+.actions-cell {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.action-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+}
+.edit-btn {
+    background-color: var(--sky-blue-light);
+    color: var(--sky-blue-dark);
+}
+.permissions-btn {
+    background-color: var(--sky-blue-primary);
+    color: white;
+}
+.delete-btn {
+    background-color: transparent;
+    color: var(--color-error);
+}
+.delete-btn:hover {
+    background-color: var(--color-error);
+    color: white;
+}

@@ -1,0 +1,102 @@
+/* src/components/common/forms.css */
+
+/* === FORM GROUP STYLES === */
+.form-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(13, 139, 255, 0.15);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.error-message {
+  color: var(--danger);
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+
+/* === BUTTON STYLES === */
+
+/* Base button class for all buttons */
+.btn {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Primary Button (Blue Gradient) */
+.btn.btn-primary {
+    background: var(--brand-gradient);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+.btn.btn-primary:hover:not(:disabled) {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button (White with Border) */
+.btn.btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+.btn.btn-secondary:hover:not(:disabled) {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* Success Button (Green) */
+.btn.btn-success {
+    background-color: var(--success);
+    color: white;
+    border: none;
+}

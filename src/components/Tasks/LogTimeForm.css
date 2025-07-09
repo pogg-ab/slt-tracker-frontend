@@ -1,0 +1,64 @@
+/* src/components/Tasks/LogTimeForm.css */
+
+.log-time-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    background-color: var(--bg-main);
+    border-radius: var(--border-radius-lg);
+}
+
+.log-time-container h4 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* Timer View */
+.timer-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.timer-display {
+    font-family: 'ui-monospace', 'Menlo', 'Monaco', 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+}
+.timer-notes input {
+    width: 350px;
+    text-align: center;
+}
+
+/* Manual & Start View */
+.start-timer-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.start-timer-section p {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary);
+}
+.manual-entry-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--border-color);
+    margin: 2rem 0;
+}
+.manual-entry-divider::before, .manual-entry-divider::after {
+    content: ''; flex: 1; border-bottom: 1px solid var(--border-color);
+}
+.manual-entry-divider span { padding: 0 1rem; font-size: 0.9rem; font-weight: 500; }
+.log-time-form p {
+    text-align: center;
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+}
+.log-time-form .form-row { display: flex; gap: 1rem; align-items: flex-end; }
+.log-time-form .form-row .form-group { flex: 1; }
+.log-time-form button { width: 100%; margin-top: 1rem; }

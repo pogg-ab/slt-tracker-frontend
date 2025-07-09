@@ -1,0 +1,12 @@
+/* src/components/Tasks/AddCommentForm.css */
+
+.add-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment-form-actions {
+    display: flex;
+    justify-content: flex-end;
+}

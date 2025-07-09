@@ -1,0 +1,42 @@
+/* src/pages/ProfilePage.css */
+
+.profile-page-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 2.5rem;
+}
+
+.profile-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.profile-widget {
+    background-color: var(--bg-surface);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-widget h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}

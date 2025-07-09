@@ -1,0 +1,58 @@
+/* src/components/Tasks/CreateTaskModal.css */
+/* Import the shared form styles */
+@import '../common/forms.css';
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(34, 41, 52, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--surface-white);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  width: 90%;
+  max-width: 550px;
+  box-shadow: var(--shadow-md);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.parent-task-title {
+  color: var(--sky-blue-primary);
+  font-style: italic;
+}

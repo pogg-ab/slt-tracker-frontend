@@ -1,0 +1,117 @@
+/* src/components/Tasks/TaskList.css */
+
+
+.task-section {
+    margin-bottom: 3rem;
+}
+
+.task-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.task-list-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.task-search input {
+    min-width: 280px;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    background-color: var(--bg-surface);
+}
+.task-search input:focus {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(13, 139, 255, 0.15);
+    outline: none;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    /* This creates a responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.task-item {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.task-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand-blue);
+}
+
+.task-item-content {
+    padding: 1.25rem;
+    flex-grow: 1;
+}
+
+.task-info {
+    margin-bottom: 1rem;
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--text-primary);
+}
+
+.task-priority {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-main);
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.task-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px; /* Pill shape */
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* --- Beautiful Status Colors --- */
+.task-status.status-pending { background-color: #FEF3C7; color: #92400E; }
+.task-status.status-in-progress { background-color: #DBEAFE; color: #1D4ED8; }
+.task-status.status-completed { background-color: #D1FAE5; color: #065F46; }
+.task-status.status-overdue { background-color: #FEE2E2; color: #991B1B; }
+
+.delete-btn {
+    background-color: transparent; border: none; color: #a0aec0;
+    font-size: 1.5rem; line-height: 1; padding: 0.25rem; border-radius: 50%;
+    cursor: pointer; width: 28px; height: 28px; display: flex;
+    align-items: center; justify-content: center; transition: var(--transition);
+}
+.delete-btn:hover {
+    background-color: var(--danger);
+    color: white;
+}

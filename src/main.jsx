@@ -1,0 +1,20 @@
+// src/main.jsx
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    {/* The Router must be on the outside */}
+    <BrowserRouter>
+      {/* The AuthProvider must be inside the Router but outside the App */}
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+);
