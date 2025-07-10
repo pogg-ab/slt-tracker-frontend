@@ -1,17 +1,18 @@
 // src/pages/UserManagementPage.jsx
+
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { 
     getAllUsers, 
     getAllDepartments, 
     createDepartment,
-    deleteUser as apiDeleteUser, // Import the new functions
+    deleteUser as apiDeleteUser,
 } from '../services/api';
 import Spinner from '../components/common/Spinner';
 import AddUserModal from '../components/Admin/AddUserModal';
 import ManagePermissionsModal from '../components/Admin/ManagePermissionsModal';
-import EditUserModal from '../components/Admin/EditUserModal'; // Import the new Edit Modal
-import './UserManagementPage.css'; // Import the stylesheet
+import EditUserModal from '../components/Admin/EditUserModal';
+import './UserManagementPage.css';
 
 const UserManagementPage = () => {
     const [users, setUsers] = useState([]);
@@ -19,10 +20,9 @@ const UserManagementPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     
-    // State for all modals
     const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
     const [selectedUserForPermissions, setSelectedUserForPermissions] = useState(null);
-    const [selectedUserForEdit, setSelectedUserForEdit] = useState(null); // New state for the edit modal
+    const [selectedUserForEdit, setSelectedUserForEdit] = useState(null);
     
     const [newDeptName, setNewDeptName] = useState('');
     const [isSubmittingDept, setIsSubmittingDept] = useState(false);
@@ -61,12 +61,10 @@ const UserManagementPage = () => {
         }
     };
 
-    // --- NEW HANDLERS for Edit and Delete ---
     const handleDeleteUser = async (userId) => {
         if (window.confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')) {
             try {
                 await apiDeleteUser(userId);
-                // Update the UI instantly by filtering out the deleted user
                 setUsers(currentUsers => currentUsers.filter(u => u.user_id !== userId));
             } catch (err) {
                 alert('Failed to delete user.');
@@ -75,11 +73,10 @@ const UserManagementPage = () => {
     };
 
     const handleUserUpdated = (updatedUser) => {
-        // Update the user in the list for an instant UI refresh
         setUsers(currentUsers => currentUsers.map(u => 
             u.user_id === updatedUser.user_id ? updatedUser : u
         ));
-        setSelectedUserForEdit(null); // Close the edit modal
+        setSelectedUserForEdit(null);
     };
 
     return (
@@ -134,9 +131,15 @@ const UserManagementPage = () => {
                                         <td>{user.email}</td>
                                         <td>{user.job_title || 'N/A'}</td>
                                         <td className="actions-cell">
-                                            <button onClick={() => setSelectedUserForEdit(user)} className="action-btn edit-btn">Edit</button>
-                                            <button onClick={() => setSelectedUserForPermissions(user)} className="action-btn permissions-btn">Permissions</button>
-                                            <button onClick={() => handleDeleteUser(user.user_id)} className="action-btn delete-btn">Delete</button>
+                                            <button onClick={() => setSelectedUserForEdit(user)} className="action-btn btn-secondary">
+                                                Edit
+                                            </button>
+                                            <button onClick={() => setSelectedUserForPermissions(user)} className="action-btn btn-primary">
+                                                Permissions
+                                            </button>
+                                            <button onClick={() => handleDeleteUser(user.user_id)} className="action-btn btn-danger-outline">
+                                                Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
