@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import UserIcon from '../common/UserIcon';
 import LogoutIcon from '../common/LogoutIcon';
-import logo from '/src/assets/logo.png'; // Using absolute path
+import logo from '/src/assets/logo.png';
 import './Layout.css';
 
 const Layout = ({ children }) => {
@@ -20,30 +20,28 @@ const Layout = ({ children }) => {
         return <main className="layout-main">{children}</main>; 
     }
 
-    // === FINAL, HIERARCHICAL NAVIGATION LOGIC (CORRECTED) ===
     const renderNavLinks = () => {
-        // 1. Check for Admin permission FIRST. This is the highest priority.
+        // 1. Check for Admin first
         if (hasPermission('MANAGE_USERS')) {
-            // An Admin only sees the "Admin Panel" link.
-            return (
-                <NavLink to="/admin/users">Admin Panel</NavLink>
-            );
+            return <NavLink to="/admin/users">Admin Panel</NavLink>;
         }
         
-        // 2. Then, check for CEO/Owner permission.
+        // 2. Then, check for CEO/Owner
         if (hasPermission('VIEW_COMPANY_OVERVIEW')) {
-            // The CEO sees their specific set of navigation links.
             return (
                 <>
                     <NavLink to="/dashboard" end>Dashboard</NavLink>
                     <NavLink to="/reports">Reports</NavLink>
-                    {/* Assuming you have a page for the CEO to view all departments */}
-                    {/* <NavLink to="/ceo/departments">Departments</NavLink> */}
+                    {/* === THIS IS THE FIX for BUG #1 === */}
+                    {/* The link is now active and checks for its specific permission */}
+                    {hasPermission('MANAGE_DEPARTMENTS') && (
+                        <NavLink to="/admin/users">Departments</NavLink>
+                    )}
                 </>
             );
         }
         
-        // 3. Finally, render the default navigation for regular Managers and Staff.
+        // 3. Default for Managers and Staff
         return (
             <>
                 <NavLink to="/dashboard" end>Dashboard</NavLink>
@@ -54,9 +52,7 @@ const Layout = ({ children }) => {
         );
     };
 
-    // Determine the correct home page link for the main logo based on permissions
     const getHomePageLink = () => {
-        // The check order here must match the logic above
         if (hasPermission('MANAGE_USERS')) return "/admin/users";
         if (hasPermission('VIEW_COMPANY_OVERVIEW')) return "/dashboard";
         return "/dashboard";
@@ -74,7 +70,6 @@ const Layout = ({ children }) => {
                         {renderNavLinks()}
                     </nav>
                 </div>
-
                 <div className="header-user">
                     <span className="welcome-text">Welcome, {user.job_title || user.name}</span>
                     <Link to="/profile" className="icon-btn" title="My Profile">
