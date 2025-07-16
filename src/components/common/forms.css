@@ -1,31 +1,59 @@
 /* src/components/common/forms.css */
 
+/* Define custom properties for colors, spacing, and shadows */
+:root {
+  /* Colors based on your Sky Link logo and a clean, professional palette */
+  --brand-blue: #0d6efd; 
+  --brand-blue-light: #428bff;
+  --brand-blue-dark: #0a58ca;
+  --brand-gradient: linear-gradient(45deg, var(--brand-blue), var(--brand-blue-light));
+
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-surface: #ffffff;
+  --bg-light: #f8f9fa;
+  --border-color: #e0e0e0;
+  --border-color-hover: #c0c0c0;
+  --danger: #dc3545;
+  --success: #28a745;
+
+  /* Shadows for depth */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+
+  /* Border Radius for a modern, soft look */
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+}
+
 /* === FORM GROUP STYLES === */
 .form-group {
-  margin-bottom: 1.25rem;
-  text-align: left;
+  margin-bottom: 1.5rem;
+  text-align: left; /* <-- THIS IS THE CRUCIAL FIX that solves your alignment issue */
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   color: var(--text-secondary);
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1.1rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-sizing: border-box;
   background-color: var(--bg-surface);
   color: var(--text-primary);
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .form-group input:focus,
@@ -33,70 +61,113 @@
 .form-group select:focus {
   outline: none;
   border-color: var(--brand-blue);
-  box-shadow: 0 0 0 3px rgba(13, 139, 255, 0.15);
+  box-shadow: 0 0 0 4px rgba(13, 139, 255, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .form-group textarea {
-    min-height: 100px;
-    resize: vertical;
+  min-height: 120px;
+  resize: vertical;
 }
 
 .error-message {
   color: var(--danger);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
   text-align: left;
+  font-weight: 500;
 }
 
-
-/* === BUTTON STYLES === */
-
-/* Base button class for all buttons */
+/* === REUSABLE BUTTON STYLES === */
 .btn {
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  letter-spacing: 0.02em;
 }
 
 .btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-/* Primary Button (Blue Gradient) */
+/* --- Primary Button --- */
 .btn.btn-primary {
-    background: var(--brand-gradient);
-    color: white;
-    box-shadow: var(--shadow-sm);
+  background: var(--brand-gradient);
+  color: white;
+  box-shadow: var(--shadow-sm);
+  background-size: 200% auto;
 }
+
 .btn.btn-primary:hover:not(:disabled) {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-/* Secondary Button (White with Border) */
+.btn.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+  background: var(--brand-blue-dark);
+}
+
+/* --- Secondary Button --- */
 .btn.btn-secondary {
-    background-color: var(--bg-surface);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-}
-.btn.btn-secondary:hover:not(:disabled) {
-    border-color: var(--text-primary);
-    color: var(--text-primary);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Success Button (Green) */
+.btn.btn-secondary:hover:not(:disabled) {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--bg-light);
+  border-color: var(--brand-blue-dark);
+  color: var(--brand-blue-dark);
+}
+
+/* --- Success Button --- */
 .btn.btn-success {
-    background-color: var(--success);
-    color: white;
-    border: none;
+  background-color: var(--success);
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn.btn-success:hover:not(:disabled) {
+  background-color: #218838;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { font-size: 0.9rem; }
+  .form-group input, .form-group textarea, .form-group select { padding: 0.7rem 0.9rem; font-size: 0.95rem; }
+  .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .form-group { margin-bottom: 0.8rem; }
+  .form-group label { font-size: 0.85rem; }
+  .form-group input, .form-group textarea, .form-group select { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+  .btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
 }

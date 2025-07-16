@@ -1,7 +1,6 @@
 // src/App.jsx
 
 import React from 'react';
-// 1. We no longer need to import BrowserRouter/Router here
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 // --- Import Page Components ---
@@ -11,6 +10,7 @@ import TaskDetailPage from './pages/TaskDetailPage';
 import ReportsPage from './pages/ReportsPage';
 import ProfilePage from './pages/ProfilePage';
 import UserManagementPage from './pages/UserManagementPage';
+import ResetPasswordPage from './pages/ResetPasswordPage'; // <-- 1. IMPORT THE NEW PAGE
 
 // --- Import CEO-Specific Page Components ---
 import DepartmentsPage from './pages/ceo/DepartmentsPage';
@@ -22,14 +22,15 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import AdminRedirect from './components/common/AdminRedirect';
 
 function App() {
-  // 2. The return statement is now much simpler.
-  //    No <AuthProvider> or <Router> wrapper needed.
   return (
     <Routes>
-      {/* === PUBLIC ROUTE === */}
+      {/* === PUBLIC ROUTES === */}
+      {/* These routes are accessible to anyone, logged in or not. */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/reset-password/:token" element={<ResetPasswordPage />} /> {/* <-- 2. ADD THE NEW PUBLIC ROUTE */}
       
       {/* === DEFAULT LANDING ROUTE === */}
+      {/* This route redirects logged-in users to their correct starting page. */}
       <Route 
         path="/"
         element={

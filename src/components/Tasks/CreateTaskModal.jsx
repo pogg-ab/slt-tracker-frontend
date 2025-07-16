@@ -1,3 +1,5 @@
+// src/components/Tasks/CreateTaskModal.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { getDepartmentUsers, createTask } from '../../services/api';
@@ -6,6 +8,7 @@ import './CreateTaskModal.css';
 import Spinner from '../common/Spinner';
 
 const CreateTaskModal = ({ onClose, onTaskCreated }) => {
+    // The useApi hook will fetch all users with the 'VIEW_ALL_USERS_FOR_ASSIGNMENT' permission
     const { data: users, loading: usersLoading, request: fetchUsers } = useApi(getDepartmentUsers);
     const { user } = useAuth(); // The logged-in manager
 
@@ -34,17 +37,21 @@ const CreateTaskModal = ({ onClose, onTaskCreated }) => {
                 description,
                 assignee_id: parseInt(assigneeId),
                 priority,
-                department_id: user.department_id, // <-- THIS IS THE CORRECTED LINE
+                department_id: user.department_id,
             };
             const response = await createTask(taskData);
-            onTaskCreated(response.data); // Pass the newly created task back
-            onClose(); // Close the modal on success
+            onTaskCreated(response.data);
+            onClose();
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to create task.');
         } finally {
             setSubmitting(false);
         }
     };
+    
+    // --- THIS IS THE FIX ---
+    // Filter the users list to exclude the System Administrator before rendering
+    const assignableUsers = users ? users.filter(u => u.job_title !== 'Administrator') : [];
 
     return (
         <div className="modal-overlay" onClick={onClose}>
@@ -65,8 +72,12 @@ const CreateTaskModal = ({ onClose, onTaskCreated }) => {
                                 <label>Assign To</label>
                                 <select value={assigneeId} onChange={e => setAssigneeId(e.target.value)} required>
                                     <option value="" disabled>-- Select a user --</option>
-                                    {users && users.map(u => (
-                                        <option key={u.user_id} value={u.user_id}>{u.name} ({u.role})</option>
+                                    
+                                    {/* Now we map over the filtered 'assignableUsers' array */}
+                                    {assignableUsers.map(u => (
+                                        <option key={u.user_id} value={u.user_id}>
+                                            {u.name} ({u.job_title || 'No Title'})
+                                        </option>
                                     ))}
                                 </select>
                             </div>
@@ -83,8 +94,8 @@ const CreateTaskModal = ({ onClose, onTaskCreated }) => {
                     )}
                     {error && <p className="error-message">{error}</p>}
                     <div className="modal-actions">
-                        <button type="button" onClick={onClose} className="btn-cancel" disabled={submitting}>Cancel</button>
-                        <button type="submit" className="btn-submit" disabled={submitting || usersLoading}>
+                        <button type="button" onClick={onClose} className="btn btn-secondary" disabled={submitting}>Cancel</button>
+                        <button type="submit" className="btn btn-primary" disabled={submitting || usersLoading}>
                             {submitting ? 'Creating...' : 'Create Task'}
                         </button>
                     </div>

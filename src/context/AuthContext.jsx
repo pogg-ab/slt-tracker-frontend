@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { loginUser, getMyProfile, registerDevice } from '../services/api'; // 1. Import registerDevice
-import { requestForToken } from '../firebase-client'; // 2. Import the token request function
+import { requestForToken } from '../firebase'; // 2. Import the token request function
 
 const AuthContext = createContext(null);
 

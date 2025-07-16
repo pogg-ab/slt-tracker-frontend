@@ -18,7 +18,6 @@ apiClient.interceptors.request.use(
 
 // --- Auth Service ---
 export const loginUser = (credentials) => apiClient.post('/users/login', credentials);
-export const changePassword = (passwordData) => apiClient.put('/users/change-password', passwordData);
 
 // --- User, Profile, & Admin Service ---
 export const getMyProfile = () => apiClient.get('/users/profile');
@@ -31,7 +30,7 @@ export const getAllPermissions = () => apiClient.get('/users/permissions-list');
 export const getUserPermissions = (userId) => apiClient.get(`/users/${userId}/permissions`);
 export const updateUserPermissions = (userId, permissionIds) => apiClient.put(`/users/${userId}/permissions`, { permissionIds });
 export const getRelatedTasksForUser = (userId) => apiClient.get(`/users/${userId}/related-tasks`);
-export const registerDevice = (tokenData) => apiClient.post('/users/register-device', tokenData);
+
 
 // --- Department Service ---
 export const getAllDepartments = () => apiClient.get('/departments');
@@ -74,3 +73,17 @@ export const deleteTask = (taskId) => apiClient.delete(`/tasks/${taskId}`);
 
 export const updateUser = (userId, userData) => apiClient.put(`/users/${userId}`, userData);
 export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
+
+export const changePassword = (passwordData) => apiClient.put('/users/change-password', passwordData);
+
+// src/services/api.js
+export const requestPasswordReset = (data) => apiClient.post('/users/request-password-reset', data);
+export const resetPassword = (data) => apiClient.post('/users/reset-password', data);
+
+// src/services/api.js
+// ... at the end of your user service functions ...
+export const registerDevice = (tokenData) => apiClient.post('/users/register-device', tokenData);
+
+export const updateDepartment = (deptId, deptData) => apiClient.put(`/departments/${deptId}`, deptData); // <-- NEW
+export const deleteDepartment = (deptId) => apiClient.delete(`/departments/${deptId}`);
+export const getDashboardStats = () => apiClient.get('/reports/dashboard-stats');
