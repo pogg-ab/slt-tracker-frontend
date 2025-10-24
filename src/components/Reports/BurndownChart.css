@@ -1,0 +1,209 @@
+/* src/components/Reports/BurndownChart.css */
+.burndown-chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 2rem;
+}
+
+.burndown-chart-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.burndown-chart-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 0.5rem 0;
+}
+
+.burndown-chart-header p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.burndown-chart-wrapper {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+/* Chart.js canvas styling */
+.burndown-chart-wrapper canvas {
+    max-height: 400px;
+}
+
+/* Loading state */
+.burndown-chart-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #6b7280;
+}
+
+/* Error state */
+.burndown-chart-error {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.burndown-chart-error p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Empty state */
+.burndown-chart-empty {
+    background-color: #f8f9fa;
+    border: 1px dashed #d1d5db;
+    color: #6b7280;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.burndown-chart-empty p {
+    margin: 0;
+    font-style: italic;
+}
+
+/* Chart legend customization */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.legend-color {
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.legend-ideal {
+    background-color: rgb(255, 99, 132);
+}
+
+.legend-actual {
+    background-color: rgb(53, 162, 235);
+}
+
+/* Chart stats summary */
+.burndown-chart-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .burndown-chart-container {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .burndown-chart-wrapper {
+        height: 300px;
+    }
+    
+    .chart-legend {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .burndown-chart-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .burndown-chart-container {
+        padding: 0.75rem;
+    }
+    
+    .burndown-chart-wrapper {
+        height: 250px;
+    }
+    
+    .burndown-chart-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .burndown-chart-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animation for chart container */
+.burndown-chart-container {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Print styles */
+@media print {
+    .burndown-chart-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+}

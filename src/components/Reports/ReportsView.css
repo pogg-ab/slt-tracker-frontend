@@ -1,0 +1,30 @@
+/* src/components/Reports/ReportsView.css */
+.reports-view {
+    padding: 1rem;
+}
+
+.report-widget {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.widget-header h3 {
+    margin: 0;
+}
+
+.widget-header select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

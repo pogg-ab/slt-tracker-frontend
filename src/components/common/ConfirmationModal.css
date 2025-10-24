@@ -1,0 +1,36 @@
+/* src/components/common/ConfirmationModal.css */
+
+.confirmation-modal {
+    padding: 20px;
+    text-align: center;
+}
+
+.confirmation-modal h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.confirmation-modal p {
+    margin: 15px 0 25px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Assuming you have these base button styles already */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}

@@ -1,0 +1,49 @@
+.add-comment-container {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #444;
+}
+
+.add-comment-container h3 {
+    margin-bottom: 1rem;
+    color: #eee;
+}
+
+.add-comment-container form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2c2c2c;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 0.5rem;
+}
+
+.add-comment-container form button {
+    padding: 0.6rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.add-comment-container form button:hover {
+    background-color: #0056b3;
+}
+
+.add-comment-container form button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}

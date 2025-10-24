@@ -1,0 +1,133 @@
+.reports-page {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 80px);
+}
+
+/* Updated header styling with oxford blue accent and professional typography */
+.reports-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 3px solid #002147;
+  padding-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 33, 71, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 8px;
+  padding: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.reports-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #002147;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.reports-header p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Enhanced KPI grid with better spacing and card styling */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.kpi-card-placeholder {
+  background-color: transparent;
+  min-height: 0;
+}
+
+/* Redesigned reports grid with professional card styling */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.report-widget {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 33, 71, 0.08);
+  border: 1px solid #e8eef5;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.report-widget:hover {
+  box-shadow: 0 8px 24px rgba(0, 33, 71, 0.12);
+  border-color: #002147;
+  transform: translateY(-2px);
+}
+
+.report-widget h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #002147;
+  font-weight: 600;
+  border-bottom: 2px solid #e8eef5;
+  padding-bottom: 1rem;
+}
+
+/* Responsive design for tablets and mobile */
+@media (max-width: 768px) {
+  .reports-page {
+    padding: 1rem;
+  }
+
+  .reports-header {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .reports-header h1 {
+    font-size: 2rem;
+  }
+
+  .reports-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .report-widget {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-page {
+    padding: 0.75rem;
+  }
+
+  .reports-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .reports-header p {
+    font-size: 0.9rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-widget {
+    padding: 1rem;
+  }
+
+  .report-widget h2 {
+    font-size: 1.1rem;
+  }
+}

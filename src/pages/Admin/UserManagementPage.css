@@ -1,0 +1,286 @@
+/* src/pages/Admin/UserManagementPage.css */
+.user-management-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #1a202c; /* Ensure base text color is dark */
+}
+
+.user-management-container h1 {
+    color: #1a202c;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.create-user-form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    color: #1a202c; /* Ensure text inside card is dark */
+}
+
+.create-user-form-card h2 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    background-color: white; /* Ensure background is white */
+    color: #1a202c; /* Ensure text color is dark */
+}
+
+/* Explicitly set text color for input fields */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input::placeholder,
+.form-group select {
+    color: #1a202c !important; /* Force dark text color */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    color: #1a202c; /* Ensure text stays dark on focus */
+    background-color: white; /* Ensure background stays white */
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #9ca3af;
+}
+
+/* Force dark text in all input states */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover, 
+.form-group input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #1a202c !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Department Controls */
+.department-controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.department-controls select {
+    flex: 1;
+    color: #1a202c !important; /* Force dark text in dropdown */
+    background-color: white !important; /* Force white background */
+}
+
+.btn-secondary {
+    background-color: #f8f9fa;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-secondary:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+/* Add Department Inline */
+.add-department-inline {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #d1d5db;
+}
+
+.add-department-inline input {
+    flex: 1;
+    margin: 0;
+    color: #1a202c !important; /* Force dark text */
+    background-color: white !important; /* Force white background */
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    border: 1px solid #3b82f6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Submit Button */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    font-family: inherit;
+}
+
+.full-width {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Messages */
+.message {
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.message.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-management-container {
+        padding: 1rem;
+    }
+    
+    .create-user-form-card {
+        padding: 1.5rem;
+    }
+    
+    .department-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .add-department-inline {
+        flex-direction: column;
+    }
+    
+    .btn-secondary {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-management-container {
+        padding: 0.5rem;
+    }
+    
+    .create-user-form-card {
+        padding: 1rem;
+    }
+    
+    .user-management-container h1 {
+        font-size: 1.75rem;
+    }
+    
+    .create-user-form-card h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Animation for new department section */
+.add-department-inline {
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus states for accessibility */
+.btn-secondary:focus,
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Placeholder styling */
+.form-group input::placeholder {
+    color: #6b7280 !important; /* Dark gray placeholder */
+    opacity: 1;
+}
+
+/* Ensure all text in the form is visible */
+.create-user-form-card * {
+    color: #1a202c !important;
+}
+
+/* Specific fix for select dropdown options */
+.form-group select option {
+    color: #1a202c !important;
+    background-color: white !important;
+}

@@ -1,0 +1,127 @@
+/* src/components/Settings/PermissionManager.css (CORRECTED) */
+/* This stylesheet inherits variables and base styles from Layout.css and SettingsView.css */
+
+.permission-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* This re-uses the style from SettingsView for a consistent heading */
+.settings-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-dark-gray);
+  margin: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.roles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.role-card {
+  background-color: var(--color-off-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.role-card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-oxford-blue);
+}
+
+.permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Custom Checkbox Styling --- */
+.custom-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color var(--transition-fast);
+}
+
+.custom-checkbox-label:hover {
+  background-color: var(--color-light-gray);
+}
+
+.custom-checkbox-input {
+  display: none;
+}
+
+.custom-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-gray);
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.custom-checkbox-box::after {
+  content: "✔";
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-fast);
+}
+
+.custom-checkbox-input:checked + .custom-checkbox-box {
+  background-color: var(--color-oxford-blue);
+  border-color: var(--color-oxford-blue);
+}
+
+.custom-checkbox-input:checked + .custom-checkbox-box::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- THIS IS THE FIX --- */
+.custom-checkbox-text {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.9rem;
+  color: var(--color-dark-gray); /* Corrected from a light color to a dark, readable gray */
+  word-break: break-all;
+}
+
+/* --- Save Button --- */
+.role-card .btn-primary {
+  align-self: flex-start;
+}
+
+/* --- Messages --- */
+.settings-message {
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  margin-bottom: 1rem;
+}
+
+.settings-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
