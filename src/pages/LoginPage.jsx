@@ -11,6 +11,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  
+  // --- STEP 1: Add state for password visibility ---
+  const [showPassword, setShowPassword] = useState(false)
 
   const { login } = useAuth()
   const navigate = useNavigate()
@@ -29,6 +32,11 @@ const LoginPage = () => {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  // --- STEP 2: Create the toggle function ---
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
   }
 
   return (
@@ -51,17 +59,23 @@ const LoginPage = () => {
               disabled={isLoading}
             />
           </div>
+          {/* --- STEP 3: Update the JSX for the password input --- */}
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={isLoading}
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={isLoading}
+              />
+              <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
+                {showPassword ? "Hide" : "Show"}
+              </span>
+            </div>
           </div>
           <button type="submit" className="login-button" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}
