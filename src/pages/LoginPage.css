@@ -251,3 +251,35 @@
     font-size: 1.35rem;
   }
 }
+
+
+
+
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Make sure the input inside the container takes up the full width */
+.password-input-container input {
+    width: 100%;
+    /* Add padding to the right to make space for the toggle text */
+    padding-right: 55px; 
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 15px; /* Position the text on the right side */
+    cursor: pointer;
+    user-select: none; /* Prevents selecting the text on click */
+    color: #888;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* Optional: Add a hover effect for better user experience */
+.password-toggle-icon:hover {
+    color: #333;
+}
