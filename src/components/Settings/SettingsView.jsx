@@ -21,7 +21,8 @@ import './SettingsView.css'; // The new stylesheet will be applied here
 const SettingsView = () => {
     const { project, hasPermission, refreshProjectData } = useProject();
     const { user } = useAuth();
-    const isGlobalAdmin = user && (user.role === 'Admin' || user.role === 'Owner');
+    // PERMANENT FIX: Added 'Manager' to the list of global admin roles.
+    const isGlobalAdmin = user && (user.role === 'Admin' || user.role === 'Owner' || user.role === 'Manager');
 
     const [details, setDetails] = useState({ name: '', project_key: '', description: '' });
     const [members, setMembers] = useState([]);
